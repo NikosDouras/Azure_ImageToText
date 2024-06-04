@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# Replace with your Azure endpoint and subscription key
+# Replace with your Azure endpoint and subscription keys
 endpoint = config.ENDPOINT
 subscription_key = config.KEY
 
