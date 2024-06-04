@@ -10,8 +10,8 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Replace with your Azure endpoint and subscription key
-endpoint = "https://nameocr1.cognitiveservices.azure.com/"
-subscription_key = "17265e11e5ec4f4695c4f2fafa42182e"
+endpoint = ""
+subscription_key = ""
 
 @app.route('/')
 def index():
