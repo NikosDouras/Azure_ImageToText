@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import requests
 from PIL import Image
 from fpdf import FPDF
-
+###this is main 1 that was here yesterday
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
