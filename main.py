@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template, send_file
-import os
+import os, requests, config
 from werkzeug.utils import secure_filename
-import requests
 from PIL import Image
 from fpdf import FPDF
 
@@ -10,8 +9,8 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Replace with your Azure endpoint and subscription key
-endpoint = "https://nameocr1.cognitiveservices.azure.com/"
-subscription_key = "17265e11e5ec4f4695c4f2fafa42182e"
+endpoint = config.ENDPOINT
+subscription_key = config.KEY
 
 @app.route('/')
 def index():
