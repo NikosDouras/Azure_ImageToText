@@ -8,9 +8,10 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-#Azure endpoint and subscription key
+
 endpoint = config.ENDPOINT
 subscription_key = config.KEY
+
 
 @app.route('/')
 def index():
