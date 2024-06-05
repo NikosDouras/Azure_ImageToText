@@ -17,26 +17,43 @@ subscription_key = config.KEY
 def index():
     return render_template('index.html')
 
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return "No file part"
 
     file = request.files['file']
-    # Read the file content
-    file_content = file.read()
-    # Get the size of the file content
-    content_length = len(file_content)
-
     if file.filename == '':
         return "No selected file"
-    if content_length > 4 * 1024 * 1024:
-        return "finally"
-    if file and file.filename.endswith('.jpg'):
+
+    # Read the file content and get the size of the file content
+    file_content = file.read()
+    content_length = len(file_content)
+
+    # Check file dimensions
+    try:
+        image = Image.open(file)
+        width, height = image.size
+        if width <= 50 or height <= 50 or width >= 10000 or height >= 10000:
+            return "Image dimensions should be greater than 50x50 pixels and less than 10000x10000 pixels"
+    except IOError:
+        return "Invalid image file"
+
+    # Check file size
+    if content_length > 4 * 1024 * 1024:  # 4 MB limit
+        return "File size exceeds the limit of 4 MB"
+
+    # Reset file pointer after reading
+    file.seek(0)
+
+    # Save the file if it is a valid .jpg
+    if file and file.filename.lower().endswith('.jpg'):
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
         return process_file(filepath)
+
     return "Invalid file type"
 
 def extract_text_from_image(image_path):
