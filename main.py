@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# Replace with your Azure endpoint and subscription keys
+#Azure endpoint and subscription key
 endpoint = config.ENDPOINT
 subscription_key = config.KEY
 
@@ -20,9 +20,17 @@ def index():
 def upload_file():
     if 'file' not in request.files:
         return "No file part"
+
     file = request.files['file']
+    # Read the file content
+    file_content = file.read()
+    # Get the size of the file content
+    content_length = len(file_content)
+
     if file.filename == '':
         return "No selected file"
+    if content_length > 4 * 1024 * 1024:
+        return "finally"
     if file and file.filename.endswith('.jpg'):
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
