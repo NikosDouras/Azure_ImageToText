@@ -1,5 +1,5 @@
 #utilities.py
-import os, requests, config
+import os, requests
 from PIL import Image
 from fpdf import FPDF
 
