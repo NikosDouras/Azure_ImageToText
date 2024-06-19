@@ -18,4 +18,5 @@ Technical Stack:
     Image Processing: PIL (Pillow)
     PDF Generation: FPDF
     OCR Service: Azure Cognitive Services
-    Deployment: Azure App Service, GitHub
+    Deployment: Azure App Services, GitHub
+    CI/CD: GitHub Actions, GitHub Secrets
