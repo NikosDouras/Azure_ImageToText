@@ -6,7 +6,7 @@ link: https://img2txt2.azurewebsites.net/
 
 Features:
 
-    -Simple interface, also for android
+    -Easy-to-use interface, also for android
     -Using Azures Computer Vision API for OCR to convert image to text
     -Automatically resizing large images to adhere to azures requirements
     -PDF Creation
